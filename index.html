@@ -222,9 +222,8 @@
                 <img src="/assets/logo.png" alt="Site logo" class="logo">
                 <h1 class="title">NUKE</h1>
             </div>
-            <ul class="nav-links">
-                
-                <li><a href="/leaderboard/rainbet">LEADERBOARDS</a></li>
+            <ul class="nav-links">                
+                <li class="highlight-link"><a href="/leaderboard/rainbet">LEADERBOARDS</a></li>
             </ul>
         </nav>
     </header>
@@ -333,6 +332,34 @@
     height: 24px;
     object-fit: contain;
   }
+.highlight-link a {
+  color: #00bfff;
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  border: 2px solid #00bfff;
+  border-radius: 8px;
+  background: rgba(0, 191, 255, 0.1);
+  text-shadow: 0 0 12px #00bfff;
+  animation: glow 1.5s infinite alternate;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.highlight-link a:hover {
+  background: #00bfff;
+  color: #000;
+  text-shadow: none;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #00bfff;
+  }
+  to {
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
+  }
+}
 </style>
 
 <div class="social-media-cards">
