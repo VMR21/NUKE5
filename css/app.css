@@ -4,17 +4,22 @@
   max-width: 70vw;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  background-image: url("/assets/bg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
+
+body {
+  background-image: url("/image.png"); /* change filename */
+  background-size: cover;        /* Ensures full screen coverage */
+  background-repeat: no-repeat;  /* Prevent tiling */
+  background-position: center;   /* Center the image */
+  background-attachment: scroll; /* Use 'scroll' for mobile compatibility */
+}
+
 
 .glow-container {
   position: fixed;
