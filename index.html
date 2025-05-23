@@ -237,7 +237,7 @@
                     <img class="game-image clash-image" id="clashImage2" src="/assets/rainbet.png"
                         style="cursor: pointer;opacity: 1;" onclick="window.location.href='/leaderboard/rainbet'">
                     <div class="label">
-                        <div class="price-wrapper glow" style="font-size: 26px; text-shadow: none;">
+                        <div class="price-wrapper leaderboard-outline">
                             $ 255
                         </div>
                     </div>
@@ -360,6 +360,29 @@
     box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
   }
 }
+.leaderboard-outline {
+  font-size: 26px;
+  font-weight: bold;
+  color: #00bfff;
+  padding: 6px 16px;
+  border: 2px solid #00bfff;
+  border-radius: 12px;
+  text-shadow: 0 0 10px #00bfff;
+  background: rgba(0, 191, 255, 0.08);
+  box-shadow: 0 0 12px #00bfff, 0 0 24px #00ffff;
+  animation: glow 1.8s infinite alternate;
+  display: inline-block;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 8px #00bfff;
+  }
+  to {
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
+  }
+}
+
 </style>
 
 <div class="social-media-cards">
