@@ -13,7 +13,7 @@ html, body {
 }
 
 body {
-  background-image: url("/image.png"); /* change filename */
+  background-image: url("/assets/image.png"); /* change filename */
   background-size: cover;        /* Ensures full screen coverage */
   background-repeat: no-repeat;  /* Prevent tiling */
   background-position: center;   /* Center the image */
