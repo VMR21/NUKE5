@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Exclusive wager races on Rainbet for code NUKE!">
-    <meta property="og:image" content="https://i.ibb.co/8LtHTByR/Screenshot-2025-05-22-102452.png">
+    <meta property="og:image"
+        content="https://i.ibb.co/8LtHTByR/Screenshot-2025-05-22-102452.png">
     <link rel="icon" type="image/jpg" href="/assets/logo.png">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/lb.css">
@@ -15,120 +17,146 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/css/toast.css">
     <style>
-        .draggable {
+        /* Your existing custom styles go here */
+        /* Removed body background styles to respect your existing CSS */
+
+        .warning-message {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px auto;
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff4444;
+            border-radius: 4px;
+            padding: 15px;
+            color: #ff4444;
+            font-weight: bold;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 768px) {
+            .warning-message {
+                width: 95%;
+                padding: 12px;
+                font-size: 14px;
+                margin: 10px auto;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
             position: fixed;
-            bottom: 15px;
-            right: 15px;
-            width: 350px;
-            height: 250px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
             z-index: 1000;
-            background: white;
-            border: 2px solid #2775ca;
-            box-shadow: 0 0 100px rgba(39, 117, 202, 1);
-        }
-
-        .controls {
-            display: flex;
-            align-items: center;
-            background-color: #333;
-            padding: 5px;
-            cursor: move;
-        }
-
-        .drag-handle {
-            flex-grow: 1;
-            text-align: left;
-            color: #2775ca;
-            font-size: 20px;
-            font-weight: 900;
-            box-shadow: 0 0 100px rgba(39, 117, 202, 1);
-            padding: 0 15px;
-        }
-
-        .close-btn {
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: #2775ca;
-            font-size: 20px;
-            font-weight: 900;
-            line-height: 30px;
-            box-shadow: 0 0 100px rgba(39, 117, 202, 1);
-            padding: 0 20px;
-        }
-
-        iframe {
+            left: 0;
+            top: 0;
             width: 100%;
-            height: calc(100% - 40px);
-            border: none;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        .minimized-icon {
-            display: none; /* Hidden by default */
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            margin: 10% auto;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transform: translateY(-20px);
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            position: fixed;
-            bottom: 15px;
-            right: 15px;
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            /* Makes it round */
-            background-color: #333;
-            color: white;
-            font-size: 30px;
-            z-index: 1001;
-            /* Should be above the draggable player */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 0 100px rgba(39, 117, 202, 1);
+            transition: color 0.2s ease;
         }
 
-        .open-btn {
-            background: none;
-            border: none;
-            color: #2775ca;
-            font-size: 20px;
-            font-weight: 900;
-            cursor: pointer;
+        .close:hover {
+            color: #fff;
         }
 
-        @media (max-width: 570px) {
-            /* center the player on mobile */
-            .draggable {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+        .modal-body {
+            color: #d1d5db;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .modal-body li {
+            margin-bottom: 10px;
+            text-align: left;
         }
 
-        @media (max-width: 768px) {
-            .code-description-container {
-                flex-direction: column;
-            }
-
-            .code-description-card,
-            .code-image {
-                min-width: 100%;
-            }
-
-            .code-image {
-                order: -1;
-                margin-bottom: 20px;
-            }
+        .modal-body ul {
+            padding-left: 20px;
         }
 
-        .code-description-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(39, 117, 202, 0.5);
+        .prev-lb-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgb(39, 117, 202);
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(39, 117, 202, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prev-lb-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: rgb(39, 117, 202);
+            box-shadow: 0 6px 20px rgba(39, 117, 202, 0.4);
+            border-color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            color: black;
+        }
+
+        .prev-lb-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .prev-lb-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s ease;
         }
 
         @keyframes float {
@@ -190,117 +218,203 @@
             }
         }
 
-        .social-media-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
+        /* Updated countdown style for raffle */
+        #countdown {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 40px #00eaff;
+            text-align: center;
+            width: 100%;
         }
 
-        .social-media-cards .card {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: transform 0.2s;
-        }
-
-        .social-media-cards .card:hover {
-            transform: translateY(-3px);
-        }
-
-        .social-media-cards .icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .highlight-link a {
-            color: #00bfff;
-            font-weight: 900;
-            font-size: 1.2rem;
-            padding: 8px 16px;
-            border: 2px solid #00bfff;
-            border-radius: 8px;
-            background: rgba(0, 191, 255, 0.1);
-            text-shadow: 0 0 12px #00bfff;
-            animation: glow 1.5s infinite alternate;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .highlight-link a:hover {
-            background: #00bfff;
-            color: #000;
-            text-shadow: none;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px #00bfff;
-            }
-
-            to {
-                box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
+        @media (max-width: 768px) {
+            #countdown {
+                font-size: 2rem;
             }
         }
 
-        .leaderboard-outline {
-            font-size: 26px;
-            font-weight: bold;
-            color: #00bfff;
-            padding: 6px 16px;
-            border: 2px solid #00bfff;
-            border-radius: 12px;
-            text-shadow: 0 0 10px #00bfff;
-            background: rgba(0, 191, 255, 0.08);
-            box-shadow: 0 0 12px #00bfff, 0 0 24px #00ffff;
-            animation: glow 1.8s infinite alternate;
-            display: inline-block;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 8px #00bfff;
-            }
-
-            to {
-                box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
-            }
-        }
-
-        .footer-socials {
+        /* Styling for the raffle elements */
+        .raffle-container {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            margin-top: 10px;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            /* Transparent background with a subtle blur effect */
+            background-color: rgba(26, 32, 44, 0.7); /* Slightly transparent dark background */
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(5px); /* For Safari */
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for transparency */
         }
 
-        .footer-socials a.social {
+        .raffle-container h1,
+        .raffle-container p {
+            color: #fff;
+            text-align: center;
+        }
+
+        .raffle-search-section {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .raffle-input-group {
+            display: flex;
+            flex-direction: column;
             gap: 10px;
-            text-decoration: none;
+        }
+
+        @media (min-width: 640px) {
+            .raffle-input-group {
+                flex-direction: row;
+            }
+        }
+
+        .raffle-input-group input {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #4a5568;
+            background-color: rgba(45, 55, 72, 0.8); /* Transparent input background */
+            color: #e2e8f0;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .raffle-input-group input::placeholder {
+            color: #a0aec0;
+        }
+
+        .raffle-input-group input:focus {
+            border-color: #4299e1;
+        }
+
+        .raffle-input-group button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            background-color: #4299e1;
             color: white;
             font-weight: bold;
-            font-size: 14px;
-            transition: transform 0.2s;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s;
+            flex-shrink: 0;
         }
 
-        .footer-socials a.social:hover {
-            transform: translateX(4px);
+        .raffle-input-group button:hover {
+            background-color: #3182ce;
         }
 
-        .footer-socials .social-img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
+        #results {
+            background-color: rgba(45, 55, 72, 0.8); /* Transparent results background */
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #e2e8f0;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+        }
+
+        #ticketContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            background-color: rgba(45, 55, 72, 0.6); /* Transparent ticket container background */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+        }
+
+        #ticketContainer>div {
+            padding: 10px;
+            border: 1px solid rgba(74, 85, 104, 0.5); /* Transparent border */
+            border-radius: 8px;
+            background: rgba(74, 85, 104, 0.7); /* Transparent card background */
+            min-width: 100px;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            flex-basis: calc(20% - 10px);
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease-in-out, background 0.2s ease;
+        }
+
+        #ticketContainer>div:hover {
+            transform: translateY(-2px);
+            background: rgba(90, 103, 216, 0.8); /* Highlight on hover with transparency */
+        }
+
+        #loadMore {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: #4299e1;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        #loadMore:hover {
+            background-color: #3182ce;
+        }
+
+        /* New button for live stream announcement */
+        .live-stream-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Vibrant gradient */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            flex-wrap: wrap; /* Allow text to wrap on small screens */
+        }
+
+        .live-stream-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+            background: linear-gradient(45deg, #ff4b2b, #ff416c); /* Reverse gradient on hover */
+        }
+
+        .live-stream-button svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor; /* Use button's text color for icon */
         }
     </style>
 </head>
@@ -309,16 +423,23 @@
     <div id="toast">
         <span id="message"></span>
     </div>
-    <div id="draggable-player" class="draggable">
-        <div id="controls" class="controls">
-            <div id="drag-handle" class="drag-handle">&#x2630;</div>
-            <button id="close-btn" class="close-btn">&times;</button>
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Raffle Rules</h2>
+                <span class="close">×</span>
+            </div>
+            <div class="modal-body">
+                <p>Here are the rules for the Weekly Raffle:</p>
+                <ul>
+                    <li>Every $100 wagered on Rainbet using **Code ProjectGamba** earns you 1 ticket.</li>
+                    <li>Tickets are updated live as you wager.</li>
+                    <li>The raffle runs from **Saturday 00:00:01 AM UTC** until **Friday 23:59:59 UTC** every week.</li>
+                    <li>The winner will be announced shortly after the cutoff time.</li>
+                    <li>Ensure you are playing on Rainbet with **Code ProjectGamba** for your wagers to count!</li>
+                </ul>
+            </div>
         </div>
-        <iframe src="https://player.kick.com/NUKE5" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-        </iframe>
-    </div>
-    <div id="minimized-icon" class="minimized-icon">
-        <button id="open-btn" class="open-btn">▶</button>
     </div>
     <canvas id="particleCanvas"></canvas>
     <div class="glow-container">
@@ -332,240 +453,345 @@
     <header>
         <nav>
             <div class="logo-title">
-                <img src="/assets/logo.png" alt="Site logo" class="logo">
+                <img src="/assets/logo1.png" alt="Site logo" class="logo">
                 <h1 class="title">NUKE</h1>
             </div>
             <ul class="nav-links">
-                <li class="highlight-link"><a href="/leaderboard/rainbet">LEADERBOARDS</a></li>
-                <li class="highlight-link"><a href="/raffle">WEEKLY RAFFLE</a></li>
+                <li><a href="/">HOME</a></li>
             </ul>
         </nav>
     </header>
+    <div class="toggle-images" style="margin-top: 50px;">
+        <img class="game-image roobet-image" id="roobetImage" src="/assets/rainbet.png"
+            style="cursor: pointer;opacity: 1;" onclick="window.location.href='/leaderboard/rainbet'">
+    </div>
     <br>
-    <br>
-    <div data-v-1d580398="" data-v-e4097664="" id="appContent">
-        <div data-v-1d580398="" class="row text" style="margin-top: 50px;">
-            <span data-v-1d580398="" class="title">COMPETE ON OUR LEADERBOARDs!</span>
-            <div class="toggle-images" style="margin-top: 20px;">
-                <div class="image-wrapper">
-                    <img class="game-image clash-image" id="clashImage2" src="/assets/rainbet.png"
-                        style="cursor: pointer;opacity: 1;" onclick="window.location.href='/leaderboard/rainbet'">
-                    <div class="label">
-                        <div class="price-wrapper leaderboard-outline">
-                            $ 255
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div data-v-1d580398="" class="row text" style="margin-top: 80px;">
-            </div>
-        <div class="card-container">
-            <a href="https://rainbet.com/?r=NUKE" class="card-link" target="_blank">
-                <div class="MuiBox-root css-1o7r9kk">
-                    <div class="MuiBox-root css-1t0wa4v"><img src="/assets/rainbet.png" alt=""></div>
-                    <div class="code-container MuiBox-root css-0"><svg
-                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1rmbjih" focusable="false"
-                            aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardDoubleArrowRightIcon">
-                            <path d="M6.41 6 5 7.41 9.58 12 5 16.59 6.41 18l6-6z"></path>
-                            <path d="m13 6-1.41 1.41L16.17 12l-4.58 4.59L13 18l6-6z"></path>
-                        </svg>
-                        <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root"
-                            style="font-size: 24px;">Code</p>
-                        <p class="MuiTypography-root MuiTypography-body1 code css-rmwyl-MuiTypography-root">
-                            NUKE
-                        </p>
-                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1m8kjhh" focusable="false"
-                            aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardDoubleArrowLeftIcon">
-                            <path d="M17.59 18 19 16.59 14.42 12 19 7.41 17.59 6l-6 6z"></path>
-                            <path d="m11 18 1.41-1.41L7.83 12l4.58-4.59L11 6l-6 6z"></path>
-                        </svg>
-                    </div>
-                    <div class="MuiBox-root css-18dqm7l">
-                        <div class="description MuiBox-root css-0"><svg
-                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ywrbwt" focusable="false"
-                                aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckCircleOutlineIcon">
-                                <path
-                                    d="M16.59 7.58 10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
-                                </path>
-                            </svg>
-                            <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root">
-                                EXCLUSIVE REWARDS
-                            </p>
-                        </div>
-                        <div class="description MuiBox-root css-0"><svg
-                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ywrbwt" focusable="false"
-                                aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckCircleOutlineIcon">
-                                <path
-                                    d="M16.59 7.58 10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
-                                </path>
-                            </svg>
-                            <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root">
-                                LEADERBOARD
-                            </p>
-                        </div>
-                    </div><a
-                        class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root signup-button css-sbgg6k-MuiButtonBase-root-MuiButton-root"
-                        tabindex="0" href="https://rainbet.com/?r=NUKE" target="_blank">Sign up<span
-                            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"></span></a>
-                </div>
-            </a>
-        </div>
-        <div data-v-1d580398="" class="row text" style="margin-top: 50px;">
-            <span data-v-1d580398="" class="title">Our Socials!</span>
+
+    <div data-v-1d580398="" data-v-e4097664="" id="appContent" class="raffle-container">
+        <h1 class="text-4xl font-extrabold mb-2 text-center" style="color: #ffffff;">
+            🎟️ Weekly Raffle - NUKE
+        </h1>
+        <p class="text-lg text-center mb-6" style="color: #a0aec0;">
+            Every $500 wager gets you 1 ticket. Updated live.
+        </p>
+
+        <div id="countdown" class="text-2xl font-semibold mb-8 p-4 bg-gray-800 rounded-lg shadow-md">
+            Loading countdown...
         </div>
 
-        <div class="social-media-cards">
-            <a href="https://kick.com/NUKE5" target="_blank" class="card kick">
-                <img src="/assets/kick.png" alt="Kick Logo" class="icon" />
-                <span>@NUKE5</span>
-            </a>
-            <a href="https://x.com/TH3NUK3" target="_blank" class="card x">
-                <img src="/assets/x.png" alt="X Logo" class="icon" />
-                <span>@TH3NUK3</span>
-            </a>
-            <a href="https://tiktok.com/@thedailynuke" target="_blank" class="card x">
-                <img src="/assets/tiktok.png" alt="Tiktok Logo" class="icon" />
-                <span>@TH3NUK3</span>
-            </a>
-            <a href="https://www.instagram.com/the_dailynuke" target="_blank" class="card youtube">
-                <img src="/assets/instagram.png" alt="YouTube Logo" class="icon" />
-                <span>@the_dailynuke</span>
-            </a>
-            <a href="https://discord.gg/pU5NU7BnhH" target="_blank" class="card discord">
-                <img src="/assets/discord.png" alt="Discord Logo" class="icon" />
-                <span>@NUKE</span>
-            </a>
-        </div>
+        <a href="https://kick.com/projectgamba" target="_blank" class="live-stream-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            Claim $25 to 2 winners on live stream! Every Saturday Via this Raffle!
+        </a>
 
-
-
-        <div data-v-5867ad71="" class="row inner-footer">
-            <div data-v-5867ad71="" class="col-5">
-                <div data-v-5867ad71="" class="content">
-                    <div data-v-5867ad71="" class="company"></div><br data-v-5867ad71=""><span data-v-5867ad71=""
-                        class="copyright">NUKE<br data-v-5867ad71=""> All Right Reserved 2025.</span>
-                </div>
+        <div class="raffle-search-section">
+            <div class="raffle-input-group">
+                <input type="text" id="searchUser" placeholder="Search by username...">
+                <button onclick="searchByUser()">Find Tickets</button>
             </div>
 
-            <div data-v-5867ad71="" class="col">
-                <span data-v-5867ad71="" class="title">Info</span>
-
-                <a data-v-5867ad71="" href="/" class=""><span data-v-5867ad71="" class="subtitle">Terms of
-                        Service</span></a>
-                <a data-v-5867ad71="" href="/" class=""><span data-v-5867ad71="" class="subtitle">Privacy
-                        Policy</span></a>
-            </div>
-
-            <div class="col">
-                <span class="title">Socials</span>
-                <div class="footer-socials">
-                    <a href="https://kick.com/NUKE5" target="_blank" class="social">
-                        <img src="/assets/kick.png" alt="Kick Logo" class="social-img">
-                        <span>Kick</span>
-                    </a>
-                    <a href="https://x.com/TH3NUK3" target="_blank" class="social">
-                        <img src="/assets/x.png" alt="X Logo" class="social-img">
-                        <span>X</span>
-                    </a>
-                    <a href="https://tiktok.com/@thedailynuke" target="_blank" class="social">
-                        <img src="/assets/tiktok.png" alt="Tiktok Logo" class="social-img">
-                        <span>Tiktok</span>
-                    </a>
-                    <a href="https://www.instagram.com/the_dailynukee" target="_blank" class="social">
-                        <img src="/assets/instagram.png" alt="Instagram Logo" class="social-img">
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://discord.gg/pU5NU7BnhH" target="_blank" class="social">
-                        <img src="/assets/discord.png" alt="Discord Logo" class="social-img">
-                        <span>Discord</span>
-                    </a>
-                </div>
-            </div>
-
-
-
-            <div data-v-5867ad71="" class="col">
-                <span data-v-5867ad71="" class="title">BeGambleAware.com</span>
-                <span data-v-5867ad71="" class="subtitle" style="font-size: 9px;">Responsible Gambling Advisory: While
-                    gambling can be entertaining,
-                    it's crucial to be aware of the associated risks. Exercise self-control,
-                    set limits, and seek support if needed. Enjoy the excitement responsibly
-                    and prioritize your well-being. We are not responsible for any losses or damages caused by gambling.
-                </span>
+            <div class="raffle-input-group">
+                <input type="number" id="searchTicket" placeholder="Search by ticket number...">
+                <button onclick="searchByTicket()">Find User</button>
             </div>
         </div>
-        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
-            integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-            data-cf-beacon='{"rayId":"93f5c327eff14c77","version":"2025.4.0-1-g37f21b1","r":1,"token":"6a289e34095c4e319f5a765107c772ad","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
-            crossorigin="anonymous"></script>
-</body>
-<script src="/js/app.js"></script>
-<script src="/js/particles.js"></script>
-<script src="/js/toast.js"></script>
 
-<script>
-    window.onload = function () {
-        var player = document.getElementById('draggable-player');
-        var dragHandle = document.getElementById('drag-handle');
-        var closeBtn = document.getElementById('close-btn');
-        var minimizedIcon = document.getElementById('minimized-icon');
-        var openBtn = document.getElementById('open-btn');
+        <div id="results" class="results-display">
+            Search results will appear here.
+        </div>
 
-        // Initial check for mobile to adjust player size and position
-        function adjustPlayerForMobile() {
-            if (window.innerWidth <= 570) {
-                player.style.width = 'calc(100% - 30px)'; // Full width minus padding
-                player.style.height = '200px'; // Adjust height as needed
-                player.style.left = '50%';
-                player.style.transform = 'translateX(-50%)';
-                player.style.bottom = '15px';
-                player.style.right = 'auto'; // Remove right positioning
-            } else {
-                player.style.width = '350px';
-                player.style.height = '250px';
-                player.style.right = '15px';
-                player.style.bottom = '15px';
-                player.style.left = 'auto';
-                player.style.transform = 'none';
+        <div id="ticketContainer"></div>
+        <button id="loadMore" onclick="loadMore()">Load More</button>
+    </div>
+
+    <div data-v-5867ad71="" class="row inner-footer">
+        <div data-v-5867ad71="" class="col-5">
+            <div data-v-5867ad71="" class="content">
+                <div data-v-5867ad71="" class="company"></div><br data-v-5867ad71=""><span data-v-5867ad71=""
+                    class="copyright">NUKE<br data-v-5867ad71=""> All Right Reserved 2025.</span>
+            </div>
+        </div>
+
+        <div data-v-5867ad71="" class="col">
+            <span data-v-5867ad71="" class="title">Info</span>
+            <a data-v-5867ad71="" href="/" class=""><span data-v-5867ad71="" class="subtitle">Terms of
+                    Service</span></a>
+            <a data-v-5867ad71="" href="/" class=""><span data-v-5867ad71="" class="subtitle">Privacy
+                    Policy</span></a>
+        </div>
+        <style>
+            .footer-socials {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                margin-top: 10px;
+            }
+
+            .footer-socials a.social {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                transition: transform 0.2s;
+            }
+
+            .footer-socials a.social:hover {
+                transform: translateX(4px);
+            }
+
+            .footer-socials .social-img {
+                width: 22px;
+                height: 22px;
+                object-fit: contain;
+            }
+        </style>
+
+<div class="col">
+    <span class="title">Socials</span>
+    <div class="footer-socials">
+        <a href="https://kick.com/NUKE5" target="_blank" class="social">
+            <img src="/assets/kick.png" alt="Kick Logo" class="social-img">
+            <span>Kick</span>
+        </a>
+        <a href="https://x.com/TH3NUK3" target="_blank" class="social">
+            <img src="/assets/x.png" alt="X Logo" class="social-img">
+            <span>X</span>
+        </a>
+        <a href="https://tiktok.com/@thedailynuke" target="_blank" class="social">
+            <img src="/assets/tiktok.png" alt="Tiktok Logo" class="social-img">
+            <span>Tiktok</span>
+        </a>
+        <a href="https://www.instagram.com/the_dailynukee" target="_blank" class="social">
+            <img src="/assets/instagram.png" alt="Instagram Logo" class="social-img">
+            <span>Instagram</span>
+        </a>
+        <a href="https://discord.gg/pU5NU7BnhH" target="_blank" class="social">
+            <img src="/assets/discord.png" alt="Discord Logo" class="social-img">
+            <span>Discord</span>
+        </a>
+    </div>
+</div>
+
+        <div data-v-5867ad71="" class="col">
+            <span data-v-5867ad71="" class="title">BeGambleAware.com</span>
+            <span data-v-5867ad71="" class="subtitle" style="font-size: 9px;">Responsible Gambling Advisory: While
+                gambling can be entertaining,
+                it's crucial to be aware of the associated risks. Exercise self-control,
+                set limits, and seek support if needed. Enjoy the excitement responsibly
+                and prioritize your well-being.</span>
+        </div>
+    </div>
+
+    <script>
+        // Modal script (Leaderboard Rules renamed to Raffle Rules)
+        var modal = document.getElementById("rulesModal");
+        var btn = document.getElementById("rulesButton");
+        var span = document.getElementsByClassName("close")[0];
+
+        // Check if elements exist before assigning events
+        if (btn) {
+            btn.onclick = function () {
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden";
+                setTimeout(() => {
+                    modal.classList.add("show");
+                }, 10);
+            }
+        } else {
+            console.warn("Element with ID 'rulesButton' not found. Modal button might not work.");
+        }
+
+        if (span) {
+            span.onclick = closeModal;
+        } else {
+            console.warn("Element with class 'close' for modal not found. Modal close might not work.");
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModal();
             }
         }
 
-        // Call on load and resize
-        adjustPlayerForMobile();
-        window.addEventListener('resize', adjustPlayerForMobile);
+        function closeModal() {
+            modal.classList.remove("show");
+            setTimeout(() => {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }, 500);
+        }
 
+        // Raffle Specific JavaScript (integrated and adapted)
+        const API = 'https://nukeraffle.onrender.com/raffle/tickets'; // Raffle API
+        let tickets = []; // Array to store all fetched tickets
+        let currentIndex = 0; // Tracks the current index for displaying tickets
+        const step = 10; // Number of tickets to display per load
 
-        dragHandle.onmousedown = function (event) {
-            event.preventDefault();
-            var startX = event.clientX - player.offsetLeft;
-            var startY = event.clientY - player.offsetTop;
+        /**
+         * Fetches tickets from the API and initializes the display.
+         */
+        async function fetchTickets() {
+            try {
+                const res = await fetch(API);
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                tickets = await res.json();
+                // Sort tickets by ticket number to ensure consistent display
+                tickets.sort((a, b) => a.ticket - b.ticket);
+                displayTickets(); // Display the initial set of tickets
+            } catch (error) {
+                console.error("Failed to fetch tickets:", error);
+                const resultsDiv = document.getElementById('results');
+                if (resultsDiv) { // Ensure resultsDiv exists before trying to update it
+                    resultsDiv.textContent = "Error loading tickets. Please try again later.";
+                }
+            }
+        }
 
-            function onMouseMove(event) {
-                player.style.left = event.clientX - startX + 'px';
-                player.style.top = event.clientY - startY + 'px';
+        /**
+         * Displays a batch of tickets in the ticketContainer.
+         */
+        function displayTickets() {
+            const container = document.getElementById('ticketContainer');
+            const loadMoreButton = document.getElementById('loadMore');
+
+            if (!container) {
+                console.error("Element with ID 'ticketContainer' not found.");
+                return;
             }
 
-            document.addEventListener('mousemove', onMouseMove);
+            const slice = tickets.slice(currentIndex, currentIndex + step);
 
-            document.onmouseup = function () {
-                document.removeEventListener('mousemove', onMouseMove);
-            };
-        };
+            if (slice.length === 0 && currentIndex === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center w-full">No tickets available yet.</p>';
+                if (loadMoreButton) loadMoreButton.style.display = 'none';
+                return;
+            }
 
+            slice.forEach(t => {
+                const div = document.createElement('div');
+                div.style = 'padding: 10px; border: 1px solid rgba(74, 85, 104, 0.5); border-radius: 8px; background: rgba(74, 85, 104, 0.7); min-width: 100px; color: #e2e8f0; font-size: 0.9rem; font-weight: 600; text-align: center; flex-basis: calc(20% - 10px); box-sizing: border-box; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.1s ease-in-out, background 0.2s ease;';
+                div.textContent = `#${t.ticket} - ${t.username}`;
+                container.appendChild(div);
+            });
+            currentIndex += step;
 
-        // Hide the player and show the minimized icon when close button is clicked
-        closeBtn.onclick = function () {
-            player.style.display = 'none';
-            minimizedIcon.style.display = 'flex'; // Show the minimized icon
-        };
+            if (loadMoreButton) {
+                if (currentIndex >= tickets.length) {
+                    loadMoreButton.style.display = 'none';
+                } else {
+                    loadMoreButton.style.display = 'block';
+                }
+            }
+        }
 
-        // Add click event to the minimized icon to show the player again
-        openBtn.onclick = function () {
-            player.style.display = 'block';
-            minimizedIcon.style.display = 'none'; // Hide the minimized icon
-        };
-    };
-</script>
+        /**
+         * Loads more tickets when the "Load More" button is clicked.
+         */
+        function loadMore() {
+            displayTickets();
+        }
+
+        /**
+         * Searches for tickets by username and displays the corresponding ticket numbers.
+         */
+        function searchByUser() {
+            const searchUser = document.getElementById('searchUser');
+            const resultsDiv = document.getElementById('results');
+            if (!searchUser || !resultsDiv) return; // Add checks
+
+            const name = searchUser.value.trim();
+            if (!name) {
+                resultsDiv.textContent = 'Please enter a username to search.';
+                return;
+            }
+            const results = tickets.filter(t => t.username.toLowerCase() === name.toLowerCase());
+            const output = results.map(t => `#${t.ticket}`).join(', ');
+            resultsDiv.textContent = output ? `Tickets for "${name}": ${output}` : `No tickets found for "${name}".`;
+        }
+
+        /**
+         * Searches for a username by ticket number and displays the username.
+         */
+        function searchByTicket() {
+            const searchTicket = document.getElementById('searchTicket');
+            const resultsDiv = document.getElementById('results');
+            if (!searchTicket || !resultsDiv) return; // Add checks
+
+            const ticketInput = searchTicket.value;
+            if (!ticketInput) {
+                resultsDiv.textContent = 'Please enter a ticket number to search.';
+                return;
+            }
+            const ticket = parseInt(ticketInput);
+            if (isNaN(ticket)) {
+                resultsDiv.textContent = 'Invalid ticket number. Please enter a valid number.';
+                return;
+            }
+            const result = tickets.find(t => t.ticket === ticket);
+            resultsDiv.textContent = result ? `Ticket #${ticket} belongs to: ${result.username}` : `Ticket #${ticket} not found.`;
+        }
+
+        /**
+         * Updates the countdown timer for the weekly raffle.
+         * The raffle period runs from Saturday 2 PM UTC to Friday 23:59:59 UTC.
+         */
+        function updateCountdown() {
+            const now = new Date();
+            const nowUtc = new Date(now.toUTCString());
+
+            let targetFridayCutoff = new Date(Date.UTC(nowUtc.getUTCFullYear(), nowUtc.getUTCMonth(), nowUtc.getUTCDate(), 23, 59, 59, 999));
+            let daysUntilFriday = (5 - nowUtc.getUTCDay() + 7) % 7;
+
+            targetFridayCutoff.setUTCDate(nowUtc.getUTCDate() + daysUntilFriday);
+
+            if (nowUtc.getTime() > targetFridayCutoff.getTime()) {
+                targetFridayCutoff.setUTCDate(targetFridayCutoff.getUTCDate() + 7);
+            }
+
+            let currentRaffleStartTime = new Date(targetFridayCutoff);
+            currentRaffleStartTime.setUTCHours(14, 0, 0, 0);
+            currentRaffleStartTime.setUTCDate(currentRaffleStartTime.getUTCDate() - ((currentRaffleStartTime.getUTCDay() + 7 - 6) % 7));
+
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return; // Check if countdown element exists
+
+            if (nowUtc.getTime() < currentRaffleStartTime.getTime()) {
+                countdownElement.textContent = "Raffle closed. Next raffle starts Saturday 2 PM UTC.";
+            } else {
+                const diff = targetFridayCutoff.getTime() - nowUtc.getTime();
+
+                if (diff <= 0) {
+                    countdownElement.textContent = "Raffle closed. Next raffle starts Saturday 2 PM UTC.";
+                } else {
+                    const d = Math.floor(diff / 86400000);
+                    const h = Math.floor((diff % 86400000) / 3600000);
+                    const m = Math.floor((diff % 3600000) / 60000);
+                    const s = Math.floor((diff % 60000) / 1000);
+                    countdownElement.textContent = `Time until cutoff: ${d}d ${h}h ${m}m ${s}s (Friday 23:59 UTC)`;
+                }
+            }
+        }
+
+        // Initialize countdown and fetch tickets when the page loads
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        fetchTickets();
+
+        // Load external JS files after your main script.
+        // If these files contain functions that your custom script relies on *before* DOMContentLoaded,
+        // you might need to adjust. Otherwise, this placement is standard.
+    </script>
+    <script src="/js/app.js"></script>
+    <script src="/js/particles.js"></script>
+    <script src="/js/toast.js"></script>
+
+</body>
 
 </html>
