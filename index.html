@@ -222,9 +222,13 @@
                 <img src="/assets/logo.png" alt="Site logo" class="logo">
                 <h1 class="title">NUKE</h1>
             </div>
-            <ul class="nav-links">                
-                <li class="highlight-link"><a href="/leaderboard/rainbet">LEADERBOARDS</a></li>
-                <li class="highlight-link"><a href="/raffle">WEEKLY RAFFLE</a></li>
+            <ul class="nav-links" style="display: flex; flex-direction: row; justify-content: center; gap: 16px; padding: 10px 0; position: relative; z-index: 999;">
+              <li class="highlight-link" style="list-style: none;">
+                <a href="/leaderboard/rainbet" style="display: inline-block; padding: 10px 16px; text-decoration: none; color: white; position: relative; z-index: 1000;">LEADERBOARDS</a>
+              </li>
+              <li class="highlight-link" style="list-style: none;">
+                <a href="/raffle" style="display: inline-block; padding: 10px 16px; text-decoration: none; color: white; position: relative; z-index: 1000;">WEEKLY RAFFLE</a>
+              </li>
             </ul>
         </nav>
     </header>
@@ -547,36 +551,5 @@
             minimizedIcon.style.display = 'none'; // Hide the minimized icon
         };
     };
-
-.nav-links {
-  position: relative;
-  z-index: 999;
-}
-
-.nav-links a {
-  pointer-events: auto;
-  z-index: 9999;
-  position: relative;
-}
-@media (max-width: 768px) {
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 12px;
-    padding: 10px 0;
-  }
-
-  .nav-links li {
-    list-style: none;
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 8px 12px;
-    text-decoration: none;
-  }
-}
-
 
 </script>
