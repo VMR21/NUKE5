@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/css/toast.css">
     <style>
-        /* Existing Styles from your code */
         .draggable {
             position: fixed;
             bottom: 15px;
@@ -192,188 +192,6 @@
                 display: none;
             }
         }
-
-        .social-media-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .social-media-cards .card {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: transform 0.2s;
-        }
-
-        .social-media-cards .card:hover {
-            transform: translateY(-3px);
-        }
-
-        .social-media-cards .icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .leaderboard-outline {
-            font-size: 26px;
-            font-weight: bold;
-            color: #00bfff;
-            padding: 6px 16px;
-            border: 2px solid #00bfff;
-            border-radius: 12px;
-            text-shadow: 0 0 10px #00bfff;
-            background: rgba(0, 191, 255, 0.08);
-            box-shadow: 0 0 12px #00bfff, 0 0 24px #00ffff;
-            animation: glow 1.8s infinite alternate;
-            display: inline-block;
-        }
-
-
-        /* NEW/MODIFIED STYLES FOR THE HEADER/MENU BAR */
-        header {
-            background-color: #333; /* Dark background for the header */
-            padding: 10px 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            position: sticky; /* Makes the header stick to the top when scrolling */
-            top: 0;
-            z-index: 1000; /* Ensure the header stays on top of other content */
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between; /* Pushes logo to left, menu to right */
-            align-items: center;
-            max-width: 1200px; /* Limit content width for better readability */
-            margin: 0 auto; /* Center the nav content */
-        }
-
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Space between logo and title */
-        }
-
-        .logo {
-            height: 40px; /* Adjust logo size */
-            width: auto;
-        }
-
-        .title {
-            color: white;
-            font-size: 28px; /* Adjust title size */
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex; /* Makes menu items horizontal */
-            gap: 25px; /* Space between menu items */
-        }
-
-        .nav-links li {
-            list-style: none; /* Ensure no bullet points */
-        }
-
-        .highlight-link a { /* Applied directly to 'a' within highlight-link */
-            color: #00bfff; /* Your existing highlight link color */
-            font-weight: 900;
-            font-size: 1.2rem;
-            padding: 8px 16px;
-            border: 2px solid #00bfff;
-            border-radius: 8px;
-            background: rgba(0, 191, 255, 0.1);
-            text-decoration: none; /* Remove underline */
-            text-shadow: 0 0 12px #00bfff;
-            animation: glow 1.5s infinite alternate;
-            transition: all 0.3s ease;
-            display: inline-block; /* Allows padding and transitions */
-            position: relative; /* Keep this for z-index if needed for popups/dropdowns */
-            z-index: 1000; /* Ensure links are clickable */
-        }
-
-        .highlight-link a:hover {
-            background: #00bfff;
-            color: #000;
-            text-shadow: none;
-        }
-
-        /* Keyframes for the glow effect */
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px #00bfff;
-            }
-            to {
-                box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
-            }
-        }
-
-        /* Media queries for responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column; /* Stack menu items vertically on smaller screens */
-                gap: 10px;
-                position: absolute; /* Position for mobile menu toggle (requires JavaScript) */
-                top: 60px; /* Adjust based on header height */
-                right: 0;
-                background-color: #333;
-                width: 100%;
-                text-align: center;
-                display: none; /* Hidden by default, shown with JavaScript toggle */
-            }
-
-            .nav-links.active {
-                display: flex; /* Show when active */
-            }
-
-            .logo-title {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* You would typically add a hamburger icon here for mobile navigation */
-        }
-
-        /* Footer Socials (already in your code) */
-        .footer-socials {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-top: 10px;
-        }
-
-        .footer-socials a.social {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-            transition: transform 0.2s;
-        }
-
-        .footer-socials a.social:hover {
-            transform: translateX(4px);
-        }
-
-        .footer-socials .social-img {
-            width: 22px;
-            height: 22px;
-            object-fit: contain;
-        }
     </style>
 </head>
 
@@ -404,16 +222,16 @@
                 <img src="/assets/logo.png" alt="Site logo" class="logo">
                 <h1 class="title">NUKE</h1>
             </div>
-            <ul class="nav-links">
-                <li class="highlight-link">
-                    <a href="/leaderboard/rainbet">LEADERBOARD</a>
-                </li>
-                <li class="highlight-link">
-                    <a href="/raffle">WEEKLY RAFFLE</a>
-                </li>
-                <li class="highlight-link">
-                    <a href="https://rainbet.com/promotions">DEPOSIT BONUS</a>
-                </li>
+            <ul class="nav-links" style="display: flex; flex-direction: row; justify-content: center; gap: 16px; padding: 10px 0; position: relative; z-index: 999;">
+              <li class="highlight-link" style="list-style: none;">
+                <a href="/leaderboard/rainbet" style="display: inline-block; padding: 10px 16px; text-decoration: none; color: white; position: relative; z-index: 1000;">LEADERBOARD</a>
+              </li>
+              <li class="highlight-link" style="list-style: none;">
+                <a href="/raffle" style="display: inline-block; padding: 10px 16px; text-decoration: none; color: white; position: relative; z-index: 1000;">WEEKLY RAFFLE</a>
+              </li>
+              <li class="highlight-link" style="list-style: none;">
+                <a href="https://rainbet.com/promotions" style="display: inline-block; padding: 10px 16px; text-decoration: none; color: white; position: relative; z-index: 1000;">DEPOSIT BONUS</a>
+              </li>
             </ul>
         </nav>
     </header>
@@ -435,61 +253,145 @@
             </div>
         </div>
         <div data-v-1d580398="" class="row text" style="margin-top: 80px;">
-            </div>
+            <!-- <span data-v-1d580398="" class="title">SUPPORT ME!</span> -->
+        </div>
         <div class="card-container">
             <a href="https://rainbet.com/?r=NUKE" class="card-link" target="_blank">
                 <div class="MuiBox-root css-1o7r9kk">
                     <div class="MuiBox-root css-1t0wa4v"><img src="/assets/rainbet.png" alt=""></div>
                     <div class="code-container MuiBox-root css-0"><svg
-                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1rmbjih" focusable="false"
-                                aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardDoubleArrowRightIcon">
-                                <path d="M6.41 6 5 7.41 9.58 12 5 16.59 6.41 18l6-6z"></path>
-                                <path d="m13 6-1.41 1.41L16.17 12l-4.58 4.59L13 18l6-6z"></path>
-                            </svg>
-                            <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root"
-                                style="font-size: 24px;">Code</p>
-                            <p class="MuiTypography-root MuiTypography-body1 code css-rmwyl-MuiTypography-root">
-                                NUKE
-                            </p>
-                            <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1m8kjhh" focusable="false"
-                                aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardDoubleArrowLeftIcon">
-                                <path d="M17.59 18 19 16.59 14.42 12 19 7.41 17.59 6l-6 6z"></path>
-                                <path d="m11 18 1.41-1.41L7.83 12l4.58-4.59L11 6l-6 6z"></path>
-                            </svg>
-                        </div>
+                            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1rmbjih" focusable="false"
+                            aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardDoubleArrowRightIcon">
+                            <path d="M6.41 6 5 7.41 9.58 12 5 16.59 6.41 18l6-6z"></path>
+                            <path d="m13 6-1.41 1.41L16.17 12l-4.58 4.59L13 18l6-6z"></path>
+                        </svg>
+                        <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root"
+                            style="font-size: 24px;">Code</p>
+                        <p class="MuiTypography-root MuiTypography-body1 code css-rmwyl-MuiTypography-root">
+                            NUKE
+                        </p>
+                        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1m8kjhh" focusable="false"
+                            aria-hidden="true" viewBox="0 0 24 24" data-testid="KeyboardDoubleArrowLeftIcon">
+                            <path d="M17.59 18 19 16.59 14.42 12 19 7.41 17.59 6l-6 6z"></path>
+                            <path d="m11 18 1.41-1.41L7.83 12l4.58-4.59L11 6l-6 6z"></path>
+                        </svg>
+                    </div>
                     <div class="MuiBox-root css-18dqm7l">
                         <div class="description MuiBox-root css-0"><svg
-                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ywrbwt" focusable="false"
-                                    aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckCircleOutlineIcon">
-                                    <path
-                                        d="M16.59 7.58 10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
-                                    </path>
-                                </svg>
-                                <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root">
-                                    EXCLUSIVE REWARDS
-                                </p>
-                            </div>
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ywrbwt" focusable="false"
+                                aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckCircleOutlineIcon">
+                                <path
+                                    d="M16.59 7.58 10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
+                                </path>
+                            </svg>
+                            <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root">
+                                EXCLUSIVE REWARDS
+                            </p>
+                        </div>
                         <div class="description MuiBox-root css-0"><svg
-                                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ywrbwt" focusable="false"
-                                    aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckCircleOutlineIcon">
-                                    <path
-                                        d="M16.59 7.58 10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
-                                    </path>
-                                </svg>
-                                <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root">
-                                    LEADERBOARD
-                                </p>
-                            </div>
+                                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ywrbwt" focusable="false"
+                                aria-hidden="true" viewBox="0 0 24 24" data-testid="CheckCircleOutlineIcon">
+                                <path
+                                    d="M16.59 7.58 10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z">
+                                </path>
+                            </svg>
+                            <p class="MuiTypography-root MuiTypography-body1 css-8a8e2m-MuiTypography-root">
+                                LEADERBOARD
+                            </p>
+                        </div>
                     </div><a
-                            class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root signup-button css-sbgg6k-MuiButtonBase-root-MuiButton-root"
-                            tabindex="0" href="https://rainbet.com/?r=NUKE" target="_blank">Sign up<span
-                                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"></span></a>
+                        class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root signup-button css-sbgg6k-MuiButtonBase-root-MuiButton-root"
+                        tabindex="0" href="https://rainbet.com/?r=NUKE" target="_blank">Sign up<span
+                            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"></span></a>
                 </div>
             </a>
         </div>
         <div data-v-1d580398="" class="row text" style="margin-top: 50px;">
             <span data-v-1d580398="" class="title">Our Socials!</span>
         </div>
+<style>
+  .social-media-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .social-media-cards .card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.2s;
+  }
+
+  .social-media-cards .card:hover {
+    transform: translateY(-3px);
+  }
+
+  .social-media-cards .icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+.highlight-link a {
+  color: #00bfff;
+  font-weight: 900;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  border: 2px solid #00bfff;
+  border-radius: 8px;
+  background: rgba(0, 191, 255, 0.1);
+  text-shadow: 0 0 12px #00bfff;
+  animation: glow 1.5s infinite alternate;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.highlight-link a:hover {
+  background: #00bfff;
+  color: #000;
+  text-shadow: none;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #00bfff;
+  }
+  to {
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
+  }
+}
+.leaderboard-outline {
+  font-size: 26px;
+  font-weight: bold;
+  color: #00bfff;
+  padding: 6px 16px;
+  border: 2px solid #00bfff;
+  border-radius: 12px;
+  text-shadow: 0 0 10px #00bfff;
+  background: rgba(0, 191, 255, 0.08);
+  box-shadow: 0 0 12px #00bfff, 0 0 24px #00ffff;
+  animation: glow 1.8s infinite alternate;
+  display: inline-block;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 8px #00bfff;
+  }
+  to {
+    box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
+  }
+}
+
+</style>
 
 <div class="social-media-cards">
     <a href="https://kick.com/NUKE5" target="_blank" class="card kick">
@@ -516,6 +418,13 @@
 
 
 
+    <!-- <div data-v-1d580398="" class="row text" style="margin-top: 50px;">
+        <span data-v-1d580398="" class="title">My Last Uploads!</span>
+        <div class="cards-container-videos">
+            
+        </div>
+    </div> -->
+
     <div data-v-5867ad71="" class="row inner-footer">
         <div data-v-5867ad71="" class="col-5">
             <div data-v-5867ad71="" class="content">
@@ -528,10 +437,39 @@
             <span data-v-5867ad71="" class="title">Info</span>
 
             <a data-v-5867ad71="" href="/" class=""><span data-v-5867ad71="" class="subtitle">Terms of
-                        Service</span></a>
+                    Service</span></a>
             <a data-v-5867ad71="" href="/" class=""><span data-v-5867ad71="" class="subtitle">Privacy
-                        Policy</span></a>
+                    Policy</span></a>
         </div>
+<style>
+  .footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  .footer-socials a.social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.2s;
+  }
+
+  .footer-socials a.social:hover {
+    transform: translateX(4px);
+  }
+
+  .footer-socials .social-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+</style>
 
 <div class="col">
     <span class="title">Socials</span>
@@ -564,11 +502,11 @@
         <div data-v-5867ad71="" class="col">
             <span data-v-5867ad71="" class="title">BeGambleAware.com</span>
             <span data-v-5867ad71="" class="subtitle" style="font-size: 9px;">Responsible Gambling Advisory: While
-                        gambling can be entertaining,
-                        it's crucial to be aware of the associated risks. Exercise self-control,
-                        set limits, and seek support if needed. Enjoy the excitement responsibly
-                        and prioritize your well-being. We are not responsible for any losses or damages caused by gambling.
-                    </span>
+                gambling can be entertaining,
+                it's crucial to be aware of the associated risks. Exercise self-control,
+                set limits, and seek support if needed. Enjoy the excitement responsibly
+                and prioritize your well-being. We are not responsible for any losses or damages caused by gambling.
+            </span>
         </div>
     </div>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"93f5c327eff14c77","version":"2025.4.0-1-g37f21b1","r":1,"token":"6a289e34095c4e319f5a765107c772ad","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
@@ -607,22 +545,14 @@
         // Hide the player and show the minimized icon when close button is clicked
         closeBtn.onclick = function () {
             player.style.display = 'none';
-            // You had a 'minimized-icon' variable but no corresponding HTML element with that ID.
-            // I'm assuming you want to show a button that says "Open Player" or similar.
-            // For now, I'll just hide the player. If you want a minimized icon,
-            // you'll need to add <div id="minimized-icon" class="minimized-icon" style="display: none;"><button id="open-btn" class="open-btn">&#x25B6;</button></div>
-            // somewhere in your HTML, outside the draggable player, and manage its display.
-            // For now, let's keep it simple and just hide the draggable player.
-            // If you add the minimized icon HTML, then uncomment the lines below.
-            // minimizedIcon.style.display = 'flex'; // Show the minimized icon
+            minimizedIcon.style.display = 'flex'; // Show the minimized icon
         };
 
         // Add click event to the minimized icon to show the player again
-        // openBtn.onclick = function () { // This will only work if minimizedIcon exists
-        //     player.style.display = 'block';
-        //     minimizedIcon.style.display = 'none'; // Hide the minimized icon
-        // };
+        openBtn.onclick = function () {
+            player.style.display = 'block';
+            minimizedIcon.style.display = 'none'; // Hide the minimized icon
+        };
     };
 
 </script>
-</html>
