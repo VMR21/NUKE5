@@ -554,5 +554,107 @@
             minimizedIcon.style.display = 'none'; // Hide the minimized icon
         };
     };
+header {
+    background-color: #333; /* Dark background for the header */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky; /* Makes the header stick to the top when scrolling */
+    top: 0;
+    z-index: 1000; /* Ensure the header stays on top of other content */
+}
 
+nav {
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left, menu to right */
+    align-items: center;
+    max-width: 1200px; /* Limit content width for better readability */
+    margin: 0 auto; /* Center the nav content */
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and title */
+}
+
+.logo {
+    height: 40px; /* Adjust logo size */
+    width: auto;
+}
+
+.title {
+    color: white;
+    font-size: 28px; /* Adjust title size */
+    margin: 0;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Makes menu items horizontal */
+    gap: 25px; /* Space between menu items */
+}
+
+.nav-links li {
+    list-style: none; /* Ensure no bullet points */
+}
+
+.nav-links a {
+    color: #00bfff; /* Your existing highlight link color */
+    font-weight: 900;
+    font-size: 1.2rem;
+    padding: 8px 16px;
+    border: 2px solid #00bfff;
+    border-radius: 8px;
+    background: rgba(0, 191, 255, 0.1);
+    text-decoration: none; /* Remove underline */
+    text-shadow: 0 0 12px #00bfff;
+    animation: glow 1.5s infinite alternate;
+    transition: all 0.3s ease;
+    display: inline-block; /* Allows padding and transitions */
+}
+
+.nav-links a:hover {
+    background: #00bfff;
+    color: #000;
+    text-shadow: none;
+}
+
+/* Keyframes for the glow effect */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px #00bfff;
+    }
+    to {
+        box-shadow: 0 0 20px #00ffff, 0 0 30px #00bfff;
+    }
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column; /* Stack menu items vertically on smaller screens */
+        gap: 10px;
+        position: absolute; /* Position for mobile menu toggle (requires JavaScript) */
+        top: 60px; /* Adjust based on header height */
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        text-align: center;
+        display: none; /* Hidden by default, shown with JavaScript toggle */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .logo-title {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* You would typically add a hamburger icon here for mobile navigation */
+}
 </script>
