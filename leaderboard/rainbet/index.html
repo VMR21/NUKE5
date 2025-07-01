@@ -15,6 +15,13 @@
     <script src="/js/countdown-roobet.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/toast.css">
     <style>
+        .leaderboard-row-wrapper {
+  width: 100%;
+  max-width: 900px; /* Adjust this for desired horizontal width */
+  margin: 0 auto;
+  padding: 6px 16px;
+}
+
         .warning-message {
             width: 90%;
             max-width: 500px;
@@ -518,6 +525,9 @@ async function loadLeaderboard(apiURL = CURRENT_API_URL) {
       `;
       top3Container.appendChild(card);
     } else {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'leaderboard-row-wrapper'; // ⬅️ extra width wrapper
+
       const row = document.createElement('div');
       row.className = 'row list row-cols-5';
       row.setAttribute('data-v-1d580398', '');
@@ -534,7 +544,8 @@ async function loadLeaderboard(apiURL = CURRENT_API_URL) {
           <div class="price-wrapper" style="color: #FFF; font-weight:bold; font-size: 15px;">${wagered}</div>
         </div>
       `;
-      rowsContainer.appendChild(row);
+      wrapper.appendChild(row);
+      rowsContainer.appendChild(wrapper);
     }
   });
 }
@@ -545,7 +556,6 @@ loadLeaderboard();
 // 🔁 Toggle logic
 const prevBtn = document.getElementById("prevLeaderboardBtn");
 const currBtn = document.getElementById("currentLeaderboardBtn");
-
 const countdownWrapper = document.getElementById("countdownWrapper");
 
 prevBtn?.addEventListener("click", () => {
@@ -553,7 +563,6 @@ prevBtn?.addEventListener("click", () => {
   prevBtn.style.display = "none";
   currBtn.style.display = "inline-flex";
 
-  // Hide countdown without collapsing layout
   countdownWrapper.style.visibility = "hidden";
   countdownWrapper.style.height = "0";
   countdownWrapper.style.overflow = "hidden";
@@ -564,11 +573,9 @@ currBtn?.addEventListener("click", () => {
   currBtn.style.display = "none";
   prevBtn.style.display = "inline-flex";
 
-  // Restore countdown
   countdownWrapper.style.visibility = "visible";
   countdownWrapper.style.height = "auto";
   countdownWrapper.style.overflow = "visible";
 });
-
-
 </script>
+
