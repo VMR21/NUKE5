@@ -329,13 +329,13 @@
     </div>
 
     <!-- Countdown Timer -->
-    <div class="countdown">
-      <div>
-        <span class="title"><span class="glow" style="color: #FFF">ENDING</span> IN </span>
-        <span class="subtitle" id="countdown">X Days XX:XX:XX</span>
-      </div>
-    </div>
+<div id="countdownWrapper" class="countdown">
+  <div>
+    <span class="title"><span class="glow" style="color: #FFF">ENDING</span> IN </span>
+    <span class="subtitle" id="countdown">X Days XX:XX:XX</span>
   </div>
+</div>
+
   <!-- Player Rows (4-10) -->
   <div id="leaderboard-rows"></div>
 </div>
@@ -550,11 +550,14 @@ prevBtn?.addEventListener("click", () => {
   loadLeaderboard(PREVIOUS_API_URL);
   prevBtn.style.display = "none";
   currBtn.style.display = "inline-flex";
+  document.getElementById("countdownWrapper").style.display = "none"; // ⛔ Hide timer
 });
 
 currBtn?.addEventListener("click", () => {
   loadLeaderboard(CURRENT_API_URL);
   currBtn.style.display = "none";
   prevBtn.style.display = "inline-flex";
+  document.getElementById("countdownWrapper").style.display = "block"; // ✅ Show timer
 });
+
 </script>
