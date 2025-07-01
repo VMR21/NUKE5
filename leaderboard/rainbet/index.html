@@ -382,6 +382,48 @@
     height: 22px;
     object-fit: contain;
   }
+#leaderboard-rows .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+#leaderboard-rows .col-2,
+#leaderboard-rows .col-3,
+#leaderboard-rows .col-5 {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#leaderboard-rows .col-2 {
+  max-width: 70px;
+  text-align: left;
+}
+
+#leaderboard-rows .col-3 {
+  max-width: 140px;
+  text-align: right;
+}
+
+#leaderboard-rows .col-5 {
+  flex: 2;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
 </style>
 
 <div class="col">
